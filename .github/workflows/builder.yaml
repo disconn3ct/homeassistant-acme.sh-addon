@@ -10,6 +10,8 @@ on:
     paths:
       - 'acme-sh/**'
       - '!acme-sh/CHANGELOG.md'
+    tags:
+      - "*"
 
   pull_request:
     branches:
