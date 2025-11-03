@@ -43,10 +43,16 @@ FULLCHAIN_FILE=$(bashio::config 'fullchainfile')
 KEY_FILE=$(bashio::config 'keyfile')
 
 DNS_CHALLENGE_ALIAS_PARAM=""
+DNS_SLEEP_PARAM=""
 
 if bashio::config.has_value 'dnschallengealias'; then
     DNS_CHALLENGE_ALIAS=$(bashio::config 'dnschallengealias')
     DNS_CHALLENGE_ALIAS_PARAM=$(printf " --challenge-alias %s" "$DNS_CHALLENGE_ALIAS")
+fi
+
+if bashio::config.has_value 'dnssleep'; then
+    DNS_SLEEP=$(bashio::config 'dnssleep')
+    DNS_SLEEP_PARAM=$(printf " --dnssleep %s" "$DNS_SLEEP")
 fi
 
 # shellcheck source=/dev/null
@@ -75,6 +81,7 @@ function issue {
         --keylength "$KEY_LENGTH" \
         --dns "$DNS_PROVIDER" \
         ${DNS_CHALLENGE_ALIAS_PARAM} \
+        ${DNS_SLEEP_PARAM} \
         || { ret=$?; [ $ret -eq ${RENEW_SKIP} ] && return 0 || return $ret ;}
 }
 

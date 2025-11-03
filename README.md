@@ -20,6 +20,7 @@ domains:
   - home.example.com
 dnsprovider: dns_oci
 dnschallengealias:
+dnssleep:
 dnsenvvars:
   - name: OCI_CLI_USER
     value: xxxx

@@ -22,6 +22,7 @@ options:
   domains: null
   dnsprovider: null
   dnschallengealias: ""
+  dnssleep: ""
   dnsenvvars:
     - name: null
       value: null
@@ -35,6 +36,7 @@ schema:
     - str
   dnsprovider: str
   dnschallengealias: str?
+  dnssleep: str?
   dnsenvvars:
     - name: str
       value: str
