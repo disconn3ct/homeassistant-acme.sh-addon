@@ -64,11 +64,8 @@ if [ ! -f "/$LE_CONFIG_HOME/.registered" ]; then
     touch /$LE_CONFIG_HOME/.registered
 fi
 
-if [ ! -f "/$LE_CONFIG_HOME/.set-default" ]; then
-    bashio::log.info "Setting default CA"
-    acme.sh --set-default-ca --server "$ACME_PROVIDER"
-    touch "/$LE_CONFIG_HOME/.set-default"
-fi
+bashio::log.info "Setting default CA"
+acme.sh --set-default-ca --server "$ACME_PROVIDER"
 
 function issue {
     # Issue the certificate, if necessary. Exit cleanly if it exists.
